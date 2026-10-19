@@ -1,46 +1,63 @@
-![Angular Elementary Cover](./cover.png)
+![CinemA Cover](./cover.png)
 
-# Curso gratuito de Angular desde cero
+# CinemA
 
-Este repositorio acompaña mi curso gratuito en YouTube donde aprenderás Angular desde cero, pero con una visión completa: desde sus conceptos legacy hasta las capacidades más modernas que ofrece Angular 20.
+Aplicación de cartelera y reservaciones de cine construida con **Angular 20** (standalone, sin `NgModules`), **TypeScript 5.8** y **Tailwind CSS 4**.
 
-🚀 **Este es el único proyecto del curso** y en él iré integrando cada nuevo tema, incluyendo comparaciones entre prácticas antiguas (`NgModules`, `ReactiveForms`, etc.) y las nuevas APIs como `provideHttpClient`, `inject()`, routing standalone, entre otras.
+> Este proyecto parte de [prophet-99/angular-elementary](https://github.com/prophet-99/angular-elementary), el proyecto del curso gratuito de Angular de su autor ([playlist en YouTube](https://youtube.com/playlist?list=PLD4CDC34D7sMfVxx037MsX3_IbZ_0mFwA)). Todo el crédito del código base es suyo; este repositorio es mi copia personal para evolucionarlo con mis propias mejoras y estilo.
 
-📺 **Playlist del curso en YouTube**  
-👉 [Haz clic aquí para ver la playlist completa](https://youtube.com/playlist?list=PLD4CDC34D7sMfVxx037MsX3_IbZ_0mFwA&si=lfr5iMmI-Q83hRYp)
+## 🧱 Stack
 
-## 🔍 ¿Qué encontrarás en este repositorio?
+| Herramienta  | Versión   |
+| ------------ | --------- |
+| Angular      | `^20.0.0` |
+| TypeScript   | `~5.8.3`  |
+| RxJS         | `~7.8.0`  |
+| Tailwind CSS | `^4.1.7`  |
+| Zone.js      | `~0.15.1` |
+| Tests        | Karma + Jasmine |
 
-- ✅ Proyecto completo con Angular 20
-- 🧱 Componentes sin `NgModules` (arquitectura moderna)
-- 🔁 Comparaciones con código legacy cuando es útil para el aprendizaje
-- 🧭 Routing moderno usando `provideRouter` y lazy loading sin módulos
-- 🧪 Pruebas unitarias adaptadas a la nueva arquitectura
-- 💡 Explicaciones progresivas en cada carpeta
+## 🗂️ Arquitectura
 
-> ⚠️ Este repositorio **no contiene código legacy directo**, sino que se comparan conceptos y se contrastan patrones antiguos vs. modernos dentro del mismo proyecto.
+```
+src/app
+├── core/        # Singleton: navbar, interceptors, services, models (+ mappers)
+├── pages/       # Features enrutadas (lazy loading con loadComponent)
+└── shared/      # UI reutilizable: button, modal (+ event bus), pipes
+```
 
-## 📚 Público objetivo
-
-- Personas que están empezando con Angular desde cero
-- Desarrolladores que vienen de versiones antiguas
-- Programadores que desean dominar Angular 20 con buenas prácticas actuales
+Alias de rutas (`tsconfig.json`): `@core/*`, `@pages/*`, `@shared/*`, `@environments/*`.
 
 ## 📦 Requisitos
 
 - Node.js 22 o superior
-- Angular CLI 20 (`npm install -g @angular/cli`)
-- Ganas de aprender 💪
+- Un token de lectura (API Read Access Token) de [The Movie Database](https://www.themoviedb.org/settings/api)
+- La API de reservaciones corriendo en `http://localhost:4000/api`
 
-## ▶️ ¿Cómo iniciar el proyecto?
+## ▶️ Cómo iniciar
 
 ```bash
-npm install
-npm run dev
+npm ci        # instala las versiones exactas del package-lock.json
+npm start     # http://localhost:4200
 ```
 
-## 🤝 Contribuciones
+Coloca tu token de TMDB en `src/environments/environment.development.ts` (y `environment.ts` para producción):
 
-Si deseas aportar mejoras, sugerencias o ideas para ampliar el curso, eres bienvenido. Puedes crear un Pull Request o abrir un issue.
+```ts
+apiKeyTheMovieDB: 'YOUR_TMDB_API_KEY', // reemplaza con tu token
+```
 
-✨ Este curso está en desarrollo activo, así que no olvides suscribirte al canal para seguir recibiendo actualizaciones.
+Para que git no registre tu token por accidente:
+
+```bash
+git update-index --skip-worktree src/environments/environment.ts src/environments/environment.development.ts
+```
+
+## 🛠️ Scripts
+
+| Script          | Descripción                          |
+| --------------- | ------------------------------------ |
+| `npm start`     | Servidor de desarrollo               |
+| `npm run build` | Build de producción en `dist/cinema` |
+| `npm run watch` | Build en modo watch (development)    |
+| `npm test`      | Pruebas unitarias con Karma          |
