@@ -7,7 +7,7 @@ export const theMovieDbInterceptor: HttpInterceptorFn = (req, next) => {
   const authRequest = req.clone({
     setHeaders: {
       Authorization: `Bearer ${apiKey}`,
-      'X-Requested-With': 'ProphetCode',
+      'X-Requested-With': 'CinemA',
     },
   });
 

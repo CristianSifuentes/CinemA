@@ -1,12 +1,10 @@
-![CinemA Cover](./cover.png)
-
 # CinemA
 
 Aplicación de cartelera y reservaciones de cine construida con **Angular 20** (standalone, sin `NgModules`), **TypeScript 5.8** y **Tailwind CSS 4**.
 
-> Este proyecto parte de [prophet-99/angular-elementary](https://github.com/prophet-99/angular-elementary), el proyecto del curso gratuito de Angular de su autor ([playlist en YouTube](https://youtube.com/playlist?list=PLD4CDC34D7sMfVxx037MsX3_IbZ_0mFwA)). Todo el crédito del código base es suyo; este repositorio es mi copia personal para evolucionarlo con mis propias mejoras y estilo.
+Proyecto desarrollado y mantenido por **Cristian Sifuentes** ([@CristianSifuentes](https://github.com/CristianSifuentes)).
 
-## 🧱 Stack
+## Stack
 
 | Herramienta  | Versión   |
 | ------------ | --------- |
@@ -17,7 +15,7 @@ Aplicación de cartelera y reservaciones de cine construida con **Angular 20** (
 | Zone.js      | `~0.15.1` |
 | Tests        | Karma + Jasmine |
 
-## 🗂️ Arquitectura
+## Arquitectura
 
 ```
 src/app
@@ -28,13 +26,13 @@ src/app
 
 Alias de rutas (`tsconfig.json`): `@core/*`, `@pages/*`, `@shared/*`, `@environments/*`.
 
-## 📦 Requisitos
+## Requisitos
 
 - Node.js 22 o superior
 - Un token de lectura (API Read Access Token) de [The Movie Database](https://www.themoviedb.org/settings/api)
 - La API de reservaciones corriendo en `http://localhost:4000/api`
 
-## ▶️ Cómo iniciar
+## Cómo iniciar
 
 ```bash
 npm ci        # instala las versiones exactas del package-lock.json
@@ -53,7 +51,7 @@ Para que git no registre tu token por accidente:
 git update-index --skip-worktree src/environments/environment.ts src/environments/environment.development.ts
 ```
 
-## 🛠️ Scripts
+## Scripts
 
 | Script          | Descripción                          |
 | --------------- | ------------------------------------ |
@@ -61,3 +59,10 @@ git update-index --skip-worktree src/environments/environment.ts src/environment
 | `npm run build` | Build de producción en `dist/cinema` |
 | `npm run watch` | Build en modo watch (development)    |
 | `npm test`      | Pruebas unitarias con Karma          |
+
+## Autor
+
+**Cristian Sifuentes**
+
+- GitHub: [@CristianSifuentes](https://github.com/CristianSifuentes)
+- Repositorio: [CristianSifuentes/CinemA](https://github.com/CristianSifuentes/CinemA)
